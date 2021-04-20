@@ -31,3 +31,11 @@ API cung cấp khả năng truy xuất đến một tập các hàm hay dùng, t
   + Ngoài ra, trong chữ ký có cả phần sử dụng **header** và **payload** nên ta có thể xác minh nội dung có giả mạo hay không.
 ## 2.3. JWT hoạt động như thế nào?
 + Trong quá trình xác thực, khi người dùng đăng nhập thành công bằng thông tin đăng nhập của họ, JWT sẽ được trả lại.
++ Bất cứ khi nào người dùng cần truy cập vào 1 route hay resource được bảo mật thì phải gửi JWT trong **Authorization** header sử dụng **Bearer** schema như sau: \
+  `Authorization: Bearer <token>`
++ Sơ đồ cho thấy cách JWT được lấy và sử dụng để truy cập các API hoặc tài nguyên:
+![image](https://user-images.githubusercontent.com/52211781/115323062-82c27f00-a1b1-11eb-9d68-7b4fa32cd193.png)
+```
+1. Ứng dụng(Client) yêu cầu ủy quyền cho authorization server. Điều này được thực hiện thông qua một trong các luồng authorization khác nhau.
+2. Khi authorization được cấp, authorization server sẽ trả về một mã thông báo truy cập cho ứng dụng.
+3. Ứng dụng sử dụng access token để truy cập vào tài nguyên được bảo vệ(ví dụ: API).
